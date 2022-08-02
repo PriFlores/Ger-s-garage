@@ -1,32 +1,16 @@
 {% extends 'index.html' %}
 
-
-<style>
-    .wrapper {
-    display: flex;
-    align-items: stretch;
-}
-
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-}
-
-#sidebar.active {
-    margin-left: -250px;
-}
-</style>
 {% block content %}
-<h1>This months products</h1>
-<div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-        </div>
 
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
+ <div class="container">
+
+
+    <!-- Sidebar -->
+    <nav class="sidenav " style="width:220px;margin-top:120px;background-color:#007bff;" id="sidenav">
+
+
+        <ul class="list-unstyled components"id="content">
+
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Car parts</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -87,17 +71,11 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
                 <a href="#">Contact</a>
             </li>
-        </ul>
-    </nav>
-
-</div>
-
-<div class="col-sm-9">
+        </ul></nav>
+<div class="col-sm-8" style="margin-left:150px;">
+    <h1>This months products</h1>
     <h4>Note that all products are subject to change, this is due to the stock availability from our suppliers, although,we always test our stock to ensure the highest quality for you.</h4>
     <table class="table table-bordered table-hover table-condensed">
     {% for c in countcat %}
@@ -140,5 +118,6 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
+</div></div></div>
+
 {% endblock content %}
