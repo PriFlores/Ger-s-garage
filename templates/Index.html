@@ -30,6 +30,10 @@
 <li id="nav-item" class= "bookings") {class="active"}>
 				<a href="{% url 'Bookings'%}">Make an appointment</a>
 			</li>
+			{% if request.user.is_staff %}
+<li id="nav-item" class= "bookings_hist") {class="active"}>
+				<a href="{% url 'bookings_history'%}">Appointments</a>
+			</li>{% endif %}
 			<li id="nav-item" class= "signout") {class="active"}>
 				<a href="{% url 'signout'%}">Sign out</a>
 			</li>

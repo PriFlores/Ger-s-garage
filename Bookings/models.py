@@ -105,7 +105,7 @@ class Bookings(models.Model):
 
     def __str__(self):
 
-        return self.CustName
+        return '{},{},{},{},{}'.format(self.id,self.CustName,self.date,self.type,self.staff)
 
     @property
     def VehicleTypes(self):

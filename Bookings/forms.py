@@ -43,11 +43,6 @@ class BookingForm(ModelForm):
                 'style': 'max-width: 300px;',
                 'placeholder': 'Name'
             }),
-            'email': TextInput(attrs={
-                'class': "form-control",
-                'style': 'max-width: 300px;',
-                'placeholder': 'Name'
-            }),
             'VehicleType': Select(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',

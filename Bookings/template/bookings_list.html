@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block title %}
+	bookings History
+{% endblock %}
+{% block content %}
+<div class="col-md-12">
+	{% if messages %}
+		{% for msg in messages %}
+			<div class="alert alert-success">
+				{{msg.message}}
+			</div>
+		{% endfor %}
+	{% endif %}
+	<!-- Start of For loop - For each p in products add a row -->
+	{% for bookings in bookings_details %}
+		<p>bookings Number: {{bookings.id}}</p>
+		<p>bookings Date: {{bookings.created}}</p>
+		<table class="table table-bbookingsed table-hover table-condensed">
+			<thead>
+			<!-- The header row-->
+				<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Appointment Type</th>
+				<th>Mechanic assigned</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{bookings.id}}</td>
+					<td>{{bookings.CustName}}</td>
+					<td>{{bookings.date}}</td>
+					<td>{{bookings.time}}</td>
+					<td>{{bookings.type}}</td>
+					<td>{{bookings.staff}}</td>
+				</tr>
+				<!-- End of For loop -->
+			</tbody>
+		</table>
+        <p>
+            <a href=""><button class="btn btn-primary">Cancel bookings</button></a>
+        </p>
+	{% endfor %}
+	
+		</div>
+	</div>
+</div>
+{% endblock content %}
