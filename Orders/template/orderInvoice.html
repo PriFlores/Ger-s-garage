@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Python Guides</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+.nav-item{
+padding: 0;
+margin: 20%;
+box-sizing: border-box;
+font-family: 'Ubuntu', sans-serif;
+margin-top: 10px;
+}
+
+h1{
+font-size:20px;}
+#sidebar-content{
+  display: block;
+  width: 20px;
+
+}
+.navbar-custom {
+  height: 60px;
+}
+
+.navbar-brand{
+background:linear-gradient(#007bff 0%,  #ceebfd  100%);
+font-size: 35px;
+padding: 30px;
+}
+
+.container-fluid{
+width: 80%;
+height: 80vh;
+display:flex;
+}
+form-image{
+width:50%;
+display:flex;
+justify-content: center;
+background-color: blue;
+padding:1rem;
+}
+.form image img{
+width: 31rem;
+}
+.form{
+display:flex;
+width:50%;
+justify-content:center;
+flex-direction:column;
+padding-top:100px;
+align-items: center;
+background-color: #fff;
+}
+.form-header{
+display:flex;
+margin-bottom:10px;
+justify-content:space-between;
+}
+
+.form-header h1::after{
+content: '';
+display: block;
+width: 5rem;
+height: 0.3rem;
+background-color: #6c63ff;
+margin: 0 auto;
+position: absolute;
+border-radius: 10px;
+}
+
+.homepagecontainer > .hometitle {
+ float:right;
+
+}
+.homepagecontainer{
+ font-size: 86px;
+ display:flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ padding: 0;
+ height:350px;
+ margin-left: 850px;
+}
+.tr{
+margin-top: 20px;
+}
+.table{
+ justify-content: space-between;
+ font-size: 15px;
+ padding-top: 3px;
+ border-style: solid;
+ border-color: white;
+ }
+ img{
+ height: 30px;}
+
+
+    </style>
+</head>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<header> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"></header>
+
+  <body>
+  <nav class="navbar">
+		<ul class="nav nav-pills ">
+        <a class="navbar-brand bg-light" href="{% url 'home'%}"><img src="Orders/images/toolicon.png" alt="Italian Trulli">Ger's Garage </a>
+	</a>
+		</nav>
+
+  <h2>Order Number: {{order.id}}</h2>
+		<h2>Order Date: {{order.created}}</h2>
+		<table class="table table-bordered table-hover table-condensed">
+			<thead>
+			<!-- The header row-->
+				<tr bgcolor="#ceebfd">
+				<th>Id</th>
+				<th>Name</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for order_item in order.get_items %}
+				<tr>
+					<td>{{order_details.id}}</td>
+					<td>{{order_item.product}}</td>
+					<td>{{order_item.quantity}}</td>
+					<td>&euro; {{order_item.price}}</td>
+					<td>&euro; {{order_item.get_cost}}</td>
+				</tr>
+				{% endfor %}
+				<!-- End of For loop -->
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-right"><strong> Order Total: &euro;
+                                {{order.get_total_cost}}</strong></h2>
+			</div>
+        </div>
+  <!--<img src="static/media/service.jpg">-->
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <h1>Thank you for your purchase!</h1><br>
+</body>
+</html>

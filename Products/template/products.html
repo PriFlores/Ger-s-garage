@@ -1,0 +1,144 @@
+{% extends 'index.html' %}
+
+
+<style>
+    .wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+</style>
+{% block content %}
+<h1>This months products</h1>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Car parts</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Accessories</a>
+                <ul class="collapse list-unstyled" id="AccSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">tools</a>
+                <ul class="collapse list-unstyled" id="toolSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Engine Parts</a>
+                <ul class="collapse list-unstyled" id="EngSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+<div class="col-sm-9">
+    <h4>Note that all products are subject to change, this is due to the stock availability from our suppliers, although,we always test our stock to ensure the highest quality for you.</h4>
+    <table class="table table-bordered table-hover table-condensed">
+    {% for c in countcat %}
+        <a href="{{c.get_absolute_url}}" class="list-group-item catheight">{{c.name}}
+            <span class="badge">{{c.num_products}}</span>
+        </a>
+    {% endfor %}
+    <!-- Search bar-->
+
+        <thead>
+            <!-- The header row-->
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>brand</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Product row(s) -->
+            {% for product in all_products_list %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.brand}}</td>
+                <td>&euro;{{product.price}}</td>
+                <td>{{product.stock}}</td>
+                {% if product.stock > 0 %}
+                <td><a href="{% url 'add_cart' product.id %}" class="btn btn-default btn-xs">🛒</a></td>
+                {% else %}
+                <td>
+                    <a href="{% url 'add_cart' product.id %}" class="btn btn-default btn-xs">
+                        🛒
+                    </a>
+                </td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
