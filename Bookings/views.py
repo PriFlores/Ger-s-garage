@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 from .forms import BookingForm
 from .models import Bookings
@@ -12,7 +14,7 @@ def new_appointment(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.cleaned_data['email']= email
-            print(form.cleaned_data['email'])
+            form.cleaned_data['status'] = 0
             form.save()
             return redirect('/')
     else:
@@ -24,7 +26,10 @@ def bookings_history(request):
     if request.user.is_staff:
         email = str(request.user.email)
         booking_details = Bookings.objects.all()
-        
+        for booking in booking_details:
+            if booking.date == datetime.now():
+                booking.status = 1
+                booking.save()
         print(booking_details)
         return render(request, 'bookings_list.html',{'bookings_details':booking_details})
     else:

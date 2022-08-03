@@ -88,6 +88,11 @@ class Bookings(models.Model):
                 (5, ' Emissions test '),
                 (6, ' Winter service '),
                 (7, ' Others '), ]
+
+    STATUS =[(0,'Booked'),
+            (1, ' In Progress'),
+            (2, ' Scrapped '),
+            (3, ' Fixed '),]
     CustName = models.TextField( 'Name',max_length=25)
     Reg = models.TextField('Registration number',max_length=25)
     timeslot = models.IntegerField('Time',choices=TIMESLOT_LIST, blank=True)
@@ -98,18 +103,20 @@ class Bookings(models.Model):
     VehicleType = models.IntegerField('Vehicle type',choices=CAR_TYPE)
     CarMake = models.IntegerField('Car make',choices=CAR_MAKES)
     EngineType = models.IntegerField('Engine type',choices=Engine_TYPES)
+    status = models.IntegerField('Status', choices=STATUS)
     staff = models.ForeignKey('Staff', on_delete=models.CASCADE)
-
-
-
 
     def __str__(self):
 
-        return '{},{},{},{},{}'.format(self.id,self.CustName,self.date,self.type,self.staff)
+        return '{},{},{},{},{},{}'.format(self.id,self.CustName,self.date,self.type,self.staff,self.status)
 
     @property
     def VehicleTypes(self):
         return self.CAR_TYPE[self.VehicleType][1]
+
+    @property
+    def BookingStatus(self):
+        return self.STATUS[self.Status][1]
 
     @property
     def EngineTypes(self):

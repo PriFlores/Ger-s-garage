@@ -9,13 +9,12 @@ from .models import Bookings
 class BookingForm(ModelForm):
     class Meta:
         model = Bookings
-        fields = ('staff', 'date', 'timeslot', 'CustName', 'Reg', 'type', 'number', 'email', 'VehicleType', 'CarMake',
-                  'EngineType')
+        fields = '__all__'
         widgets = {
-            'staff': Select(attrs={'class': "form-control",'placeholder': 'Staff'}),
+            'staff': Select(attrs={'class': "form-control", 'placeholder': 'Staff'}),
             'date': DateInput(
-                attrs={ 'type': 'date', 'value': datetime.now().strftime("%d-%m-%Y"),
-                       'class': 'form-control','style': 'max-width: 300px;'},
+                attrs={'type': 'date', 'value': datetime.now().strftime("%d-%m-%Y"),
+                       'class': 'form-control', 'style': 'max-width: 300px;'},
             ),
 
             'timeslot': Select(attrs={
