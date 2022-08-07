@@ -1,73 +1,13 @@
 [
     {
-      "model": "Products",
-      "pk": 1,
+      "model": "Products.Product",
+      "pk": 49,
       "fields": {
-        "products_id":1,
-        "name": "screwdriver set",
+        "id":52,
+        "name": "Booking",
+        "description": "Booking Charge",
         "brand": "Generic",
-        "description": "pencil screwdrivers",
-        "stock": 3,
-        "price": 100.00
-        }
-    },
-    {
-        "model": "Products",
-        "pk": 2,
-        "fields": {
-          "products_id":2,
-          "name": "soldering iron",
-          "brand": "Dewalt",
-          "description": "soldering iron",
-          "stock": 4,
-          "price": 7.00
-          }
-      },
-      {
-        "model": "Products",
-        "pk": 3,
-        "fields": {
-          "products_id":3,
-          "name": "screws",
-          "brand": "Generic",
-          "description": "Iron screws",
-          "stock": 100,
-          "price": 2.00
-          }
-      },
-      {
-        "model": "Products",
-        "pk": 4,
-        "fields": {
-          "products_id":4,
-          "name": "arc Welder",
-          "brand": "Parkside",
-          "description": "25kw arc Welder",
-          "stock": 50,
-          "price": 1.00
-          }
-      },
-      {
-        "model": "Products",
-        "pk": 5,
-        "fields": {
-          "products_id":5,
-          "name": "electrical grease",
-          "brand": "Generic",
-          "description": "Copper mixed electrical grease",
-          "stock": 9,
-          "price": 99.00
-          }
-      },
-  {
-      "model": "Products.products",
-      "pk": 6,
-      "fields": {
-        "products_id":6,
-        "name": "Tape",
-        "brand": "3M",
-        "description": "5x electrical tape",
-        "stock": 3,
-        "price": 100.00
+        "price": 100.00,
+        "stock": 3000
         }
     }]
