@@ -14,7 +14,7 @@ def new_appointment(request):
         email = str(request.user.email)
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.cleaned_data['email']= email
+            form.cleaned_data['email'] = email
             form.cleaned_data['status'] = 0
             form.save()
         return redirect('Pay_BK')

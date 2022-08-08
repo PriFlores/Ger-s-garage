@@ -9,7 +9,7 @@ from .models import Bookings
 class BookingForm(ModelForm):
     class Meta:
         model = Bookings
-        fields = '_all_'
+        fields = '__all__'
         widgets = {
             'staff': Select(attrs={'class': "form-control", 'placeholder': 'Staff'}),
             'date': DateInput(
@@ -26,6 +26,11 @@ class BookingForm(ModelForm):
                 'class': "form-control",
                 'placeholder': 'Name',
                 'style': 'max-width: 300px;',
+            }),
+            'email': TextInput(attrs={
+                'class': "form-control",
+                'placeholder': 'Name',
+                'style': 'max-width: 190px;',
             }),
             'Reg': TextInput(attrs={
                 'class': "form-control",

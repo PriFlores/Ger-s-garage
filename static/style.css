@@ -225,3 +225,17 @@ outline: 1px solid Blue;
   width: 35%;
   padding: 5px;
 }
+.bookingbutton{
+text-decoration: none;
+width: 400px;
+cursor: pointer;
+border-color: azure;
+border-style: solid;
+padding: 40px;
+margin-left: 450px;
+}
+
+strong{
+font-size: 40px;
+}
+

@@ -1,10 +1,12 @@
 {% extends 'index.html' %}
 
 {% block content %}
-
-                    <a href="{% url 'add_cart' 52 %}" class="btn btn-default btn-xs">
-                        🛒
+<div class="bookingbutton">
+     <a href="{% url 'add_cart' 52 %}" class="btn btn-default btn-xs">
+         <strong> 🛒 Pay for this booking</strong>
                     </a>
+</div>
+
 
 
 {% endblock content %}
