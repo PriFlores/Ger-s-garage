@@ -2,92 +2,41 @@
 
 {% block content %}
 
- <div class="container">
+
+<div class="container">
 
 
     <!-- Sidebar -->
-    <nav class="sidenav " style="width:220px;margin-top:120px;background-color:#007bff;" id="sidenav">
+    <nav class="sidenav p" style="width:220px;margin-top:120px;background-color:#ceebfd; display:flex;" " id="sidenav">
 
 
-        <ul class="list-unstyled components"id="content">
+        <ul class="list-unstyled components"id="content" >
 
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Car parts</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
+                <a href="{% url 'category' 2 %}" style= "color: black;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Car parts</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="{% url 'category' 4 %}" style= "color: black;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Accessories</a>
+
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Accessories</a>
-                <ul class="collapse list-unstyled" id="AccSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
+                <a href="{% url 'category' 5 %}" style= "color: black;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">tools</a>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">tools</a>
-                <ul class="collapse list-unstyled" id="toolSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
+                <a href="{% url 'category' 3 %}" style= "color: black;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Engine Parts</a>
             </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Engine Parts</a>
-                <ul class="collapse list-unstyled" id="EngSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
+
         </ul></nav>
 <div class="col-sm-8" style="margin-left:150px;">
     <h1>This months products</h1>
     <h4>Note that all products are subject to change, this is due to the stock availability from our suppliers, although,we always test our stock to ensure the highest quality for you.</h4>
     <table class="table table-bordered table-hover table-condensed">
-    {% for c in countcat %}
-        <a href="{{c.get_absolute_url}}" class="list-group-item catheight">{{c.name}}
-            <span class="badge">{{c.num_products}}</span>
-        </a>
-    {% endfor %}
-    <!-- Search bar-->
 
+    <!-- Search bar-->
         <thead>
          <tr>
                 <th>Name</th>
+                <th>category</th>
                 <th>Description</th>
                 <th>brand</th>
                 <th>Price</th>
@@ -99,6 +48,7 @@
             {% for product in all_products_list %}
             <tr>
                 <td>{{product.name}}</td>
+                <td>{{product.category.name}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.brand}}</td>
                 <td>&euro;{{product.price}}</td>

@@ -15,6 +15,7 @@
 	{% for order in order_details %}
 		<p>Order Number: {{order.id}}</p>
 		<p>Order Date: {{order.created}}</p>
+
 		<table class="table table-bordered table-hover table-condensed">
 			<thead>
 			<!-- The header row-->
@@ -29,7 +30,7 @@
 			<tbody>
 				{% for order_item in order.get_items %}
 				<tr>
-					<td>{{order_details.id}}</td>
+					<td>{{order_item.id}}</td>
 					<td>{{order_item.product}}</td>
 					<td>{{order_item.quantity}}</td>
 					<td>&euro; {{order_item.price}}</td>
@@ -43,7 +44,7 @@
 			<div class="col-md-12">
 				<p class="text-right"><strong>Order Total: &euro;
                                 {{order.get_total_cost}}</strong></p>
-				<a href="{% url 'orders_invoice' order.order_id %}"><button class="btn btn-primary">Print Invoice</button></a>
+								<a href="{% url 'orders_invoice' order.id %}"><button class="btn btn-primary">Print Invoice</button></a>
 			</div>
         </div>
         <p>
@@ -51,13 +52,16 @@
         </p>
 	{% endfor %}
 	<div class="mx-auto">
-		{% if orders.paginator.num_pages > 1 %}
+		{% if orders.paginator.num_pages == 1 %}
 		<hr>
 		<div class="text-center">
 			{% for pages in orders.paginator.page_range %}
 				<a href="page{{page}}" class="btn btn-heavy btn-sm {% if orders.number == page %} active {% endif %}">{{page}}</a>
 			{% endfor %}
+
 		{% endif %}
+
+
 		</div>
 	</div>
 </div>

@@ -13,11 +13,14 @@ class ProductListView(ListView):
     def categories(self):
         return Category.objects.all()
 
+def ListByCat(request,id):
+    category = Category.objects.get(id=id)
+    products = Product.objects.filter(category_id = category.id)
+    return render(request, 'categories.html', {'Category': category,'products':products})
 
 def product_list(request, categoryId=None):
     category = None
     products = Product.objects.all()
-    CountCategories = Category.objects.annotate(numProducts=Count('products'))
     if (categoryId):
         category = get_object_or_404(Category, id=category)
         products.filter(category=category)
@@ -31,5 +34,4 @@ def product_list(request, categoryId=None):
     except (EmptyPage, InvalidPage):
         order = paginator.page(paginator.num_pages)
     return render(request, 'products.html',
-                  {'products': products,
-                   'countcat': CountCategories})
+                  {'products': products})

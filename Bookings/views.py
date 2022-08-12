@@ -14,17 +14,15 @@ def new_appointment(request):
         email = str(request.user.email)
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.cleaned_data['email'] = email
-            form.cleaned_data['status'] = 0
             form.save()
-        return redirect('Pay_BK')
+            return redirect('Pay_BK')
     else:
         form = BookingForm()
     return render(request, 'bookings.html', {'form': form})
 
 @login_required()
 def bookings_history(request):
-    if request.user.is_staff:
+    if request.user.is_staff or request.user.is_superuser:
         email = str(request.user.email)
         booking_details = Bookings.objects.all()
         for booking in booking_details:

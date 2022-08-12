@@ -181,8 +181,9 @@ outline: 1px solid Blue;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #ffffff;
-  display: block;
+  background-color: #ceebfd;
+
+}  display: block;
 }
 .td{background-color:black;}
 
@@ -238,4 +239,8 @@ margin-left: 450px;
 strong{
 font-size: 40px;
 }
+.sidenav p{
+  background-color: #ceebfd;
+  font: black;
 
+}

@@ -1,6 +1,5 @@
 from datetime import date, datetime
 from django import forms
-from datetimewidget.widgets import DateTimeWidget
 from django.forms import ModelForm, TextInput, DateInput, Select
 
 from .models import Bookings
@@ -9,7 +8,8 @@ from .models import Bookings
 class BookingForm(ModelForm):
     class Meta:
         model = Bookings
-        fields = '__all__'
+        fields = ('staff', 'date', 'timeslot', 'CustName', 'Reg', 'type', 'number', 'email', 'VehicleType', 'CarMake',
+                  'EngineType')
         widgets = {
             'staff': Select(attrs={'class': "form-control", 'placeholder': 'Staff'}),
             'date': DateInput(

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'Vehicles',
     'shop_cart',
 'crispy_forms',
-
+'django_extensions',
 ]
 
 MIDDLEWARE = [

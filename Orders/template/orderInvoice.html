@@ -94,11 +94,11 @@ margin-top: 20px;
  font-size: 15px;
  padding-top: 3px;
  border-style: solid;
- border-color: white;
+ border-color: black;
  }
  img{
  height: 30px;}
-
+td{padding-left: 20%;}
 
     </style>
 </head>
@@ -112,12 +112,13 @@ margin-top: 20px;
 	</a>
 		</nav>
 
-  <h2>Order Number: {{order.id}}</h2>
-		<h2>Order Date: {{order.created}}</h2>
+		<p>Order Number: {{order_details.id}}</p>
+		<p>Order Date: {{order_details.created}}</p>
+
 		<table class="table table-bordered table-hover table-condensed">
 			<thead>
 			<!-- The header row-->
-				<tr bgcolor="#ceebfd">
+				<tr>
 				<th>Id</th>
 				<th>Name</th>
 				<th>Quantity</th>
@@ -126,9 +127,9 @@ margin-top: 20px;
 				</tr>
 			</thead>
 			<tbody>
-				{% for order_item in order.get_items %}
+				{% for order_item in order_details.get_items %}
 				<tr>
-					<td>{{order_details.id}}</td>
+					<td>{{order_item.id}}</td>
 					<td>{{order_item.product}}</td>
 					<td>{{order_item.quantity}}</td>
 					<td>&euro; {{order_item.price}}</td>
@@ -140,10 +141,11 @@ margin-top: 20px;
 		</table>
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="text-right"><strong> Order Total: &euro;
-                                {{order.get_total_cost}}</strong></h2>
+				<p class="text-right"><strong>Order Total: &euro;
+                                {{order_details.get_total_cost}}</strong></p>
 			</div>
         </div>
+
   <!--<img src="static/media/service.jpg">-->
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -103,7 +103,7 @@ class Bookings(models.Model):
     VehicleType = models.IntegerField('Vehicle type',choices=CAR_TYPE)
     CarMake = models.IntegerField('Car make',choices=CAR_MAKES)
     EngineType = models.IntegerField('Engine type',choices=Engine_TYPES)
-    status = models.IntegerField('Status', choices=STATUS)
+    status = models.IntegerField('Status', choices=STATUS,default=0)
     staff = models.ForeignKey('Staff', on_delete=models.CASCADE)
 
     def __str__(self):

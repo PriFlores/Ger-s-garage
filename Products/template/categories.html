@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block content %}
+    <h1>{{Category.name}}</h1>
+<table class="table table-bordered table-hover table-condensed">
+
+    <!-- Search bar-->
+
+        <thead>
+         <tr>
+                <th>Name</th>
+                <th>category</th>
+                <th>Description</th>
+                <th>brand</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Product row(s) -->
+            {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.category.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.brand}}</td>
+                <td>&euro;{{product.price}}</td>
+                <td>{{product.stock}}</td>
+                {% if product.stock > 0 %}
+                <td><a href="{% url 'add_cart' product.id %}" class="btn btn-default btn-xs">🛒</a></td>
+                {% else %}
+                <td>
+                    <a href="{% url 'add_cart' product.id %}" class="btn btn-default btn-xs">
+                        🛒
+                    </a>
+                </td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

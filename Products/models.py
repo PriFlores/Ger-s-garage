@@ -4,10 +4,10 @@ import Products
 
 class Category(models.Model):
     name = models.TextField(max_length=25, default='')
-    products = models.ManyToManyField('Product')
 
+    @property
     def get_products(self):
-        return Products.objects.filter(category=self)
+        return Product.objects.filter(category__name=self.name)
 
     def __str__(self):
         return self.name
@@ -28,6 +28,7 @@ class Product(models.Model):
     brand = models.TextField(max_length=25, default='')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     picture = models.ImageField(upload_to='images/', blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     stock = models.IntegerField()
     def __str__(self):
         return self.name
