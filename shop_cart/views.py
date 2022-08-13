@@ -12,7 +12,7 @@ def _cart_id(request):
         cart = request.session.create()
     return cart
 
-def add_cart (request, product_id):
+def add_cart (request, product_id):#add items to the cart/if there is no cart it creates one
     product = Product.objects.get(id=product_id)
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -45,12 +45,12 @@ def cart_detail(request, total= 0 , counter = 0, cart_items = None):
     except ObjectDoesNotExist:
         pass
     key = settings.STRIPE_PUBLISHABLE_KEY
-    stripe.api_key = settings.STRIPE_SECRET_KEY
+    stripe.api_key = settings.STRIPE_SECRET_KEY#loads in the created stripe keys to create the stripe session
     desc = 'new order'
     stotal = int(total*100)
     return render(request, 'shop_cart.html', dict(cart_items= cart_items, total = total, counter= counter, key=key, stotal=stotal, desc=desc ))
 
-def remove_cart(request, product_id):
+def remove_cart(request, product_id):#removes one item from the cart
     cart = Cart.objects.get(cart_id=_cart_id(request))
     product = get_object_or_404(Product, id=product_id)
     cart_item= CartItem.objects.get(product=product, cart= cart)
@@ -62,7 +62,7 @@ def remove_cart(request, product_id):
     return redirect('cart_detail')
 
 
-def empty_cart(request):
+def empty_cart(request):#empties th entire cart
     cart= Cart.objects.get(cart_id= _cart_id(request))
     cart_items = CartItem.objects.filter(cart=cart)
     for cart_item in cart_items:

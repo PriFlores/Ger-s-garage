@@ -58,7 +58,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Garage.urls'
-
+## directory locations for applications templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -134,5 +134,6 @@ STATICFILES_DIRS =[os.path.join(BASE_DIR,"static/")]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CART_SESSION_ID = 'shop_cart'
+## keys from Stripe website
 STRIPE_SECRET_KEY = 'sk_test_51LKplnJJEHEeXpp9I0qczNJMGFXkk8S8d2kcwyGinxxFNE13nXWOb5MvXdjVgoTsL5aEMzCBAosJfVOLcZG1Iqxe00B58dvzVs'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51LKplnJJEHEeXpp9HcPlVfyv5JkKcsXanVvUiyx8Dz5EfmBHT80XkzdnGpsvIOF95fme1B1KeNwrcd5CKgAl74P500Z0Or5lbK'

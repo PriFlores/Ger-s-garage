@@ -66,11 +66,10 @@ def orders_history(request):
     return render(request, 'order_list.html',{'order_details':order_details})
 
 
-
+##generates order invoice, using the Xhtml2PDF libraries
 def orders_invoice(request ,order_id):
     # getting the template
     order_details = Orders.objects.get(id=order_id)
     pdf = html_to_pdf('orderInvoice.html',{'order_details':order_details})
-    #return render(request,'orderInvoice.html',{'order_details':order_details})
     # rendering the template
     return HttpResponse(pdf, content_type='application/pdf')

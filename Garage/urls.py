@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from GarageStore import views
-
+## this URL patterns connect the apps to the projects and allow us to use the views in each application as well as Djangp default views
+## such as user creation
 urlpatterns = [
     path('admin/', admin.site.urls), # default django administrator site
     path('', include('GarageStore.urls')),

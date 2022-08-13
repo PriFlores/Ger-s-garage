@@ -64,7 +64,7 @@ class BookingForm(ModelForm):
             }),
         }
 
-    def clean_date(self):
+    def clean_date(self): ## cleans the date format before entry to the database also, ensures that sundays are not validate
         day = self.cleaned_data['date']
 
         if day <= date.today():
